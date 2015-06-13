@@ -1,0 +1,52 @@
+<html>
+	<head>
+		<title>
+		Light-Snack-Stopper
+		</title>
+		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+		<script>
+			var myFirebaseRef = new Firebase("https://fridgelock.firebaseio.com/");
+			
+			var Locked = 'test';
+			var UnlockCode = '';
+			var Door = '';
+			function lockdoor() {
+				var Locked.set = true;
+				alert(Locked);
+			}
+			function unlockdoor() {
+				var Locked.set = false;
+				alert(Locked);
+			}
+			function konami() {
+				var UnlockCode.set = 'K'
+				alert(UnlockCode);
+			}
+			function UDLR() {
+				var UnlockCode.set = 'UDLR';
+				alert(UnlockCode);
+			}
+		</script>
+			
+	</head>
+	<body>
+		<p class="title">
+			Light Snack Stopper interface
+		</p>
+		<p>
+<!-- Main -->
+		Right now, your GE SmartFridge door is <span id='O/C'>Null (something went wrong)</span> and <span id='U/L'> Null (something went wrong)</span>.
+		</p>
+		<p>
+			Your FridgePin™ is: <span id="PIN"> test</span>
+		</p>
+		<p>
+		<button onclick="lockdoor()"> Lock your door! </button>
+		<button onclick="unlockdoor()"> Unlock your door! </button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                		</p>
+		<p>
+			Which Preset Code would you like to use? 
+			<button onclick="konami()">The Konami Code</button>
+			<button onclick="UDLR()">Up, Down, Left, Right.</button>
+		</p>
+	</body>
+</html>
