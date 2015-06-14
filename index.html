@@ -11,14 +11,16 @@
 });
 
 			var ref = new Firebase("https://fridgelock.firebaseio.com/");
-			
-			ref.set({
-				Locked: null,
-				Open: null,
-			})			
-			var Locked = 'test';
+			//set up the two FireBase vars (disabled due to system braking bug caused by overwrite)
+			//ref.set({
+			//	Locked: null,
+			//	Open: null,
+			//})			
+			// set null states of Vars in reg. JS
+			var Locked = '';
 			var UnlockCode = '';
 			var Door = '';
+			// function that will send lockdoor signal, console.log is for debuging
 			function lockdoor() {
 				var Locked = true;
 				console.log(Locked);
@@ -26,6 +28,7 @@
 				Locked: true,
 			})			
 			}
+			// function that will send unlockdoor signal, console.log is for debuging
 			function unlockdoor() {
 				var Locked = false;
 				console.log(Locked);
@@ -33,13 +36,15 @@
 				Locked: false,
 			})			
 			}
+			// function that will send code upload unlock code (disabled as of now) console.log is for debuging
 			function konami() {
-				var UnlockCode = 'K'
+				var UnlockCode = 1342
 				console.log(UnlockCode);
 
 			}
-			function UDLR() {
-				var UnlockCode = 'UDLR';
+			// function that will send code upload unlock code (disabled as of now) console.log is for debuging
+			function DDDD() {
+				var UnlockCode = 3333;
 				console.log(UnlockCode);
 			}
 		</script>
@@ -51,7 +56,7 @@
 		</p>
 		<p>
 <!-- Main -->
-		Right now, your GE SmartFridge door is <span id='O/C'>Null (something went wrong)</span> and <span id='U/L'> Null (something went wrong)</span>.
+		Right now, your GE SmartFridge door is <span class='O/C'> Null (something went wrong)</span> and <span id='U/L'> Null (something went wrong)</span>.
 		</p>
 		<p>
 			Your FridgePin is: <span id="PIN"> test</span>
@@ -62,7 +67,7 @@
 		<p>
 			Which Preset Code would you like to use? 
 			<button onclick="konami()">The Konami Code</button>
-			<button onclick="UDLR()">Up, Down, Left, Right.</button>
+			<button onclick="DDDD()">Up, Down, Left, Right.</button>
 		</p>
 	</body>
 </html>
