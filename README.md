@@ -1,4 +1,4 @@
-$ the light snack stopper
+# the light snack stopper
 
 The problem: the fridge door constantly opening. whether getting a snack, little kids and/or pets messing with it, Or even that pesky moocher friend you have getting to your good drinks. 
 
@@ -16,7 +16,7 @@ Safety can be another factor when using this device. Little kids who constant pa
 
 And pets who can force the door open (having a dog that could do that, I speak from experience) won't be able too with the lock in place
 
-In conclusion, the light-snack stopper is an ideal edition to the GE smart fridge for the needs of dieters, heavy drinkers and starting families 
+#In conclusion, the light-snack stopper is an ideal edition to the GE smart fridge for the needs of dieters, heavy drinkers and starting families 
 ---------------------------
  Neutral @ 3.3 = (327 , 336)
  
