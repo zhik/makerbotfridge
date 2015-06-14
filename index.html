@@ -5,49 +5,7 @@
 		</title>
 		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-		<script>
-			$( document ).ready(function() {
-    console.log( "This is a console log test." );
-});
-
-			var ref = new Firebase("https://fridgelock.firebaseio.com/");
-			//set up the two FireBase vars (disabled due to system braking bug caused by overwrite)
-			//ref.set({
-			//	Locked: null,
-			//	Open: null,
-			//})			
-			// set null states of Vars in reg. JS
-			var Locked = '';
-			var UnlockCode = '';
-			var Door = '';
-			// function that will send lockdoor signal, console.log is for debuging
-			function lockdoor() {
-				var Locked = true;
-				console.log(Locked);
-				ref.update({
-				Locked: true,
-			})			
-			}
-			// function that will send unlockdoor signal, console.log is for debuging
-			function unlockdoor() {
-				var Locked = false;
-				console.log(Locked);
-				ref.update({
-				Locked: false,
-			})			
-			}
-			// function that will send code upload unlock code (disabled as of now) console.log is for debuging
-			function konami() {
-				var UnlockCode = 1342
-				console.log(UnlockCode);
-
-			}
-			// function that will send code upload unlock code (disabled as of now) console.log is for debuging
-			function DDDD() {
-				var UnlockCode = 3333;
-				console.log(UnlockCode);
-			}
-		</script>
+		<script src='./Js/index.js'></script>
 			
 	</head>
 	<body>
@@ -56,18 +14,23 @@
 		</p>
 		<p>
 <!-- Main -->
-		Right now, your GE SmartFridge door is <span class='O/C'> Null (something went wrong)</span> and <span id='U/L'> Null (something went wrong)</span>.
-		</p>
-		<p>
-			Your FridgePin is: <span id="PIN"> test</span>
+		Right now, your GE SmartFridge door is
+<script>
+	console.log(Locked);
+if (Open == true) {document.write('Open')} 
+else if (Open == false) {document.write('Closed')} 
+else {document.write('EVERYTHING BROKE SEND HELP')}
+</script>
+ and
+ <script>
+if (Locked == true) {document.write('Locked')} 
+else if (Locked == false) {document.write('Unlocked')} 
+else {document.write('EVERYTHING BROKE SEND HELP')}
+</script>
+ .
 		</p>
 		<p>
 		<button onclick="lockdoor()"> Lock your door! </button>
 		<button onclick="unlockdoor()"> Unlock your door! </button>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                		</p>
-		<p>
-			Which Preset Code would you like to use? 
-			<button onclick="konami()">The Konami Code</button>
-			<button onclick="DDDD()">Up, Down, Left, Right.</button>
-		</p>
-	</body>
+			</body>
 </html>
