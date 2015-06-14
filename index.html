@@ -4,27 +4,43 @@
 		Light-Snack-Stopper
 		</title>
 		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script>
-			var myFirebaseRef = new Firebase("https://fridgelock.firebaseio.com/");
+			$( document ).ready(function() {
+    console.log( "ready!" );
+});
+
+			var ref = new Firebase("https://fridgelock.firebaseio.com/");
 			
+			ref.set({
+				Locked: null,
+				Open: null,
+			})			
 			var Locked = 'test';
 			var UnlockCode = '';
 			var Door = '';
 			function lockdoor() {
-				var Locked.set = true;
-				alert(Locked);
+				var Locked = true;
+				console.log(Locked);
+				ref.update({
+				Locked: true,
+			})			
 			}
 			function unlockdoor() {
-				var Locked.set = false;
-				alert(Locked);
+				var Locked = false;
+				console.log(Locked);
+				ref.update({
+				Locked: false,
+			})			
 			}
 			function konami() {
-				var UnlockCode.set = 'K'
-				alert(UnlockCode);
+				var UnlockCode = 'K'
+				console.log(UnlockCode);
+
 			}
 			function UDLR() {
-				var UnlockCode.set = 'UDLR';
-				alert(UnlockCode);
+				var UnlockCode = 'UDLR';
+				console.log(UnlockCode);
 			}
 		</script>
 			
@@ -38,7 +54,7 @@
 		Right now, your GE SmartFridge door is <span id='O/C'>Null (something went wrong)</span> and <span id='U/L'> Null (something went wrong)</span>.
 		</p>
 		<p>
-			Your FridgePin™ is: <span id="PIN"> test</span>
+			Your FridgePin is: <span id="PIN"> test</span>
 		</p>
 		<p>
 		<button onclick="lockdoor()"> Lock your door! </button>
