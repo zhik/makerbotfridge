@@ -12,6 +12,9 @@ const int buttonPin = 12;     // the number of the pushbutton pin
 const int ledPin =  7;      // the number of the LED pin
 int buttonState = 0;
 
+
+
+
 void setup() {
   // put your setup code here, to run once:
   // initialize the LED pin as an output:
@@ -34,7 +37,10 @@ void setup() {
   randomSeed(analogRead(0));
   want[3] = random(1, 5);
 
+  myservo.attach(13);  // attaches the servo on pin 9 to the servo object 
 }
+
+
 
 void loop() {
 
@@ -47,28 +53,41 @@ void loop() {
     closed = true;
   Serial.println("button state high; closed"); 
   unlock = false;
+    if (unlock == true) {
+  //for(pos = 0; pos < 180; pos += 180)  // goes from 0 degrees to 180 degrees 
+                                 // in steps of 1 degree 
+    myservo.write(0);              // tell servo to go to position in variable 'pos' 
+    delay(200);                       // waits 15ms for the servo to reach the position 
   }
+    else if(unlock == false) {
+    // for(pos = 180; pos>=1; pos-=180)     // goes from 180 degrees to 0 degrees 
+                          
+    myservo.write(180);              // tell servo to go to position in variable 'pos' 
+    delay(20);                       // waits 15ms for the servo to reach the position 
+  
+  }
+  }
+  
    else { // not pressed ; open
     // turn LED on:
     digitalWrite(ledPin, HIGH);
     closed = false;
     Serial.println("Button state low; open");
     unlock = true;
-  }
-  
-  //sero 
-  if (unlock == true) {
-    myservo.write(0);              // tell servo to go to position in variable 'pos' 
-    delay(100);                       // waits 15ms for the servo to reach the position 
+      if (unlock == true) {
+    myservo.write(180);              // tell servo to go to position in variable 'pos' 
+    delay(200);                       // waits 15ms for the servo to reach the position 
   }
     else if(unlock == false) {
-    myservo.write(180);              // tell servo to go to position in variable 'pos' 
-    delay(100);                       // waits 15ms for the servo to reach the position 
+    // for(pos = 180; pos>=1; pos-=180)     // goes from 180 degrees to 0 degrees 
+                          
+    myservo.write(0);              // tell servo to go to position in variable 'pos' 
+    delay(200);                       // waits 15ms for the servo to reach the position 
   
   }
-
+  }
   
-  
+ 
   Serial.println(closed);
   Serial.println("it works");
   delay(500);
@@ -161,6 +180,20 @@ void loop() {
     Serial.println("**");
     if (got[0] == want[0] && got[1] == want[1] && got[2] == want[2] && got[3] == want[3]) {
       unlock = true;
+      if (unlock == true) {
+      //for(pos = 0; pos < 180; pos += 180)  // goes from 0 degrees to 180 degrees 
+                                     // in steps of 1 degree 
+        myservo.write(0);              // tell servo to go to position in variable 'pos' 
+        delay(200);                       // waits 15ms for the servo to reach the position 
+      }
+        else if(unlock == false) {
+        // for(pos = 180; pos>=1; pos-=180)     // goes from 180 degrees to 0 degrees 
+                              
+        myservo.write(180);              // tell servo to go to position in variable 'pos' 
+        delay(20);                       // waits 15ms for the servo to reach the position 
+      
+      }
+      delay(12000);
       //****
       Serial.println(unlock);
     }
@@ -194,13 +227,9 @@ void loop() {
       digitalWrite(5, LOW);
       digitalWrite(6, LOW);
       delay(100);
-
-      
+     
       unlock = false;
-      want[0] = random(1, 5);
-      want[1] = random(1, 5);
-      want[2] = random(1, 5);
-      want[3] = random(1, 5);
+
     }
    
     if(buttonState==LOW){
