@@ -10,10 +10,9 @@
  DOWN  = value 3 = cords (492 , 336) = Yellow led5
  LEFT  = value 4 = cords (172 , 336) = Blue led 4
 
- Button(tinfoil) = pin 7 
+ Button = pin 7 
  Led = pin 8 
- Servo = pin 13      = model radioshack Cat. No. 2730766
- Joystick = A0 + A1  = model v1.1 seeed-studio
+ Servo = pin 13
+ Joystick = A0 + A1 
  
----------------------------
 
