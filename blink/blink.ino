@@ -1,7 +1,7 @@
 // constants won't change. They're used here to 
 // set pin numbers
 const int buttonPin = 7;     // the number of the pushbutton pin
-const int ledPin =  5;      // the number of the LED pin
+const int ledPin =  8;      // the number of the LED pin
 
 
 boolean closed=true; // true = closed , false = open
@@ -25,10 +25,11 @@ void loop(){
   if (buttonState == HIGH) {     
     // turn LED on:    
     digitalWrite(ledPin, HIGH); 
-    
+    Serial.println("button state high; closed");
   } 
   else {
     // turn LED off:
     digitalWrite(ledPin, LOW); 
+    Serial.println("button state low; open");
   }
 }
