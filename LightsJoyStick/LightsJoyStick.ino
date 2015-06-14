@@ -42,7 +42,7 @@ void loop() {
   // if it is, the buttonState is HIGH:
   if (buttonState == LOW) { // pressed ; closed
     // turn LED off:
-    digitalWrite(ledPin, HIGH);
+    digitalWrite(ledPin, LOW);
     closed = true;
   Serial.println("button state high; closed"); 
   }
@@ -52,8 +52,25 @@ void loop() {
     closed = false;
     Serial.println("Button state low; open");
   }
+  
+  if (unlock == true) {
+  //for(pos = 0; pos < 180; pos += 180)  // goes from 0 degrees to 180 degrees 
+                                 // in steps of 1 degree 
+    myservo.write(0);              // tell servo to go to position in variable 'pos' 
+    delay(1500);                       // waits 15ms for the servo to reach the position 
+  }
+    else if(unlock == false) {
+    // for(pos = 180; pos>=1; pos-=180)     // goes from 180 degrees to 0 degrees 
+                          
+    myservo.write(180);              // tell servo to go to position in variable 'pos' 
+    delay(1500);                       // waits 15ms for the servo to reach the position 
+  
+  }
+
+  
+  
   Serial.println(closed);
-  Serial.println("really closed");
+  Serial.println("it works");
   delay(500);
   while (closed == true) {
     for (int i = 0; i < 4; i++) {
@@ -92,19 +109,17 @@ void loop() {
     digitalWrite(4, HIGH);
     digitalWrite(5, HIGH);
     digitalWrite(6, HIGH);
-    delay(250);
+    delay(300);
     digitalWrite(3, LOW);
     digitalWrite(4, LOW);
     digitalWrite(5, LOW);
     digitalWrite(6, LOW);
-    delay(200);
 
     // put your main code here, to run repeatedly:
     //joystick coordinate
     int sensorValue1 = analogRead(A0);
     int sensorValue2 = analogRead(A1);
-    //delay(250);
-
+    delay(200);
     //checking joystick - up down left right, priority on up down- add value into got[]
     if (sensorValue1 < 500 && sensorValue1 > 400) {
       /*digitalWrite(5, HIGH);
@@ -138,6 +153,7 @@ void loop() {
       got[pos] = 4;
       pos++;
     }
+
 
     for (int i = 0; i < 4; i++) {
       Serial.print(got[i]);
@@ -178,25 +194,17 @@ void loop() {
       digitalWrite(5, LOW);
       digitalWrite(6, LOW);
       delay(100);
-      if (unlock == true) {
-        //for(pos = 0; pos < 180; pos += 180)  // goes from 0 degrees to 180 degrees
-        // in steps of 1 degree
-        myservo.write(0);              // tell servo to go to position in variable 'pos'
-        delay(1500);                       // waits 15ms for the servo to reach the position
-        Serial.println("myservo=0; unlock =true"); 
-      }
-      else if (unlock == false) {
-        // for(pos = 180; pos>=1; pos-=180)     // goes from 180 degrees to 0 degrees
-        myservo.write(180);              // tell servo to go to position in variable 'pos'
-        delay(1500);                       // waits 15ms for the servo to reach the position
-        Serial.println("myservo=180; unlock=false");
-      }
+
       
       unlock = false;
       want[0] = random(1, 5);
       want[1] = random(1, 5);
       want[2] = random(1, 5);
       want[3] = random(1, 5);
+    }
+   
+    if(buttonState==LOW){
+      closed=false;
     }
 
     
