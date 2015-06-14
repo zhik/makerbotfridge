@@ -1,40 +1,50 @@
 $( document ).ready(function() {
     console.log( "This is a console log test." );
-});
-			//set up the two FireBase vars (disabled due to system braking bug caused by overwrite)
+    
+    //set up the two FireBase vars (disabled due to system braking bug caused by overwrite)
 			//ref.set({
-			//	Locked: null,
-			//	Open: null,
+			//	unlocked: null,
+			//	closed: null,
 			//})			
 			// set null states of Vars in reg. JS
-			var Locked = '';
+			var unlocked = '';
 			var UnlockCode = '';
 			var Door = '';
-			var Open = '';
+			var closed = '';
 			var ref = new Firebase("https://fridgelock.firebaseio.com");
-			ref.child('Locked').on("value", function(snapshot) {
-   Locked = snapshot.val();
-   console.log(Locked);
-}, function (errorObject) {
-  console.log("The read failed: " + errorObject.code);
-});
-			ref.child('Open').on("value", 
-function(snapshot) {
-   Locked = snapshot.val();
-   console.log(Locked);
+			
+							ref.child('unlocked').on("value", function(snapshot) {
+   unlocked = snapshot.val();
+   console.log(unlocked);
+   
+if (unlocked == false) {var unlockedmessage = 'Locked' }
+else if (unlocked == true) {var unlockedmessage = 'Unlocked'}
+   document.getElementById("unlocked").innerHTML = unlockedmessage;
 }, function (errorObject) {
   console.log("The read failed: " + errorObject.code);
 });
 
+			ref.child('closed').on("value", 
+function(snapshot) {
+   closed = snapshot.val();
+   console.log(closed);
+}, function (errorObject) {
+  console.log("The read failed: " + errorObject.code);
+});
+
+
 			// function that will send lockdoor signal, console.log is for debuging
 			function lockdoor() {
 				ref.update({
-				Locked: true,
+				unlocked: false,
 			})			
 			}
 			// function that will send unlockdoor signal, console.log is for debuging
 			function unlockdoor() {
 				ref.update({
-				Locked: false,
+				unlocked: true,
 			})	
 			}
+			
+});
+			

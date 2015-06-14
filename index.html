@@ -6,6 +6,7 @@
 		<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src='./Js/index.js'></script>
+		
 			
 	</head>
 	<body>
@@ -15,8 +16,7 @@
 		<p>
 <!-- Main -->
 		Right now, your GE SmartFridge door is
-<script>
-	console.log(Locked);
+<!--<script>
 if (Open == true) {document.write('Open')} 
 else if (Open == false) {document.write('Closed')} 
 else {document.write('EVERYTHING BROKE SEND HELP')}
@@ -26,7 +26,12 @@ else {document.write('EVERYTHING BROKE SEND HELP')}
 if (Locked == true) {document.write('Locked')} 
 else if (Locked == false) {document.write('Unlocked')} 
 else {document.write('EVERYTHING BROKE SEND HELP')}
-</script>
+</script>-->
+<span id='closed'>
+</span>
+and
+<span id='unlocked'>
+</span>
  .
 		</p>
 		<p>
